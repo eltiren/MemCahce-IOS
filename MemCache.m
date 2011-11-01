@@ -53,7 +53,12 @@ static MemCache *sharedCache = nil;
 - (void)dealloc
 {
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-    [center removeObserver:self];
+    [center removeObserver:self 
+                      name:UIApplicationDidReceiveMemoryWarningNotification 
+                    object:nil];
+    [center removeObserver:self 
+                      name:UIApplicationWillResignActiveNotification 
+                    object:nil];
 }
 
 - (void)setValue:(id)value forKey:(NSString *)key
